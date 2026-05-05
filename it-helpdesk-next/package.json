@@ -1,0 +1,42 @@
+{
+  "name": "it-helpdesk-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:seed": "ts-node prisma/seed.ts"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.7.0",
+    "@prisma/client": "^5.14.0",
+    "chart.js": "^4.4.3",
+    "cloudinary": "^2.3.1",
+    "next": "14.2.3",
+    "next-auth": "^5.0.0-beta.19",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "prisma": "^5.14.0",
+    "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
+}

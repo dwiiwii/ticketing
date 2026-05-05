@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Dashboard Fasremit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo" style="justify-content: center; margin-bottom: 40px;">
+                <img src="assets/fasremit.png" alt="Logo" style="width: 200px; height: auto; object-fit: contain;">
+            </div>
+
+            <div class="login-header">
+                <h1>Selamat Datang</h1>
+                <p>Silakan masukkan PIN untuk masuk</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="pin">PIN Akses</label>
+                    <div class="input-wrapper">
+                        <i class="ri-lock-line"></i>
+                        <input type="password" id="pin" name="pin" placeholder="Masukkan PIN" required
+                            style="text-align: center; letter-spacing: 5px; font-size: 18px;">
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="login-btn">Masuk</button>
+                <div id="loginMessage" style="color: #ef4444; font-size: 13px; margin-top: 10px; text-align: center;">
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const messageDiv = document.getElementById('loginMessage');
+
+            messageDiv.textContent = 'Checking...';
+
+            fetch('auth.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = data.redirect;
+                    } else {
+                        messageDiv.textContent = data.message;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    messageDiv.textContent = 'Terjadi kesalahan sistem.';
+                });
+        });
+    </script>
+</body>
+
+</html>

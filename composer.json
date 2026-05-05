@@ -1,0 +1,8 @@
+{
+    "name": "fasremit/it-helpdesk",
+    "description": "IT Helpdesk Ticketing System",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    }
+}
